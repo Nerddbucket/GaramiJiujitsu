@@ -2,19 +2,20 @@ import { useState } from 'react';
 
 // Logo component with fallback handling
 const LogoImage = ({ className }: { className: string }) => {
+  const baseUrl = import.meta.env.BASE_URL;
   return (
     <img 
-      src="/assets/garami_logo.png" 
+      src={`${baseUrl}assets/garami_logo.png`} 
       alt="Garami Jiu Jitsu Logo" 
       className={className}
       onError={(e) => {
         const target = e.target as HTMLImageElement;
         if (target.src.includes('.png')) {
-          target.src = '/assets/garami_logo.jpg';
+          target.src = `${baseUrl}assets/garami_logo.jpg`;
         } else if (target.src.includes('.jpg')) {
-          target.src = '/assets/garami_logo.jpeg';
+          target.src = `${baseUrl}assets/garami_logo.jpeg`;
         } else if (target.src.includes('.jpeg')) {
-          target.src = '/assets/logo.png';
+          target.src = `${baseUrl}assets/logo.png`;
         }
       }}
     />

@@ -5,15 +5,16 @@ const Gallery = () => {
 
   // Gallery images from /public/assets/gallery/ folder
   // To add more photos, just add them to the gallery folder and update this array
+  const baseUrl = import.meta.env.BASE_URL;
   const galleryImages = [
-    '/assets/gallery/IMG_0021.jpg',
-    '/assets/gallery/IMG_0022.jpg',
-    '/assets/gallery/IMG_0023.jpg',
-    '/assets/gallery/IMG_0024.jpg',
-    '/assets/gallery/IMG_0025.jpg',
-    '/assets/gallery/IMG_0026.jpg',
-    '/assets/gallery/IMG_0027.jpg',
-    '/assets/gallery/IMG_0028.jpg',
+    `${baseUrl}assets/gallery/IMG_0021.jpg`,
+    `${baseUrl}assets/gallery/IMG_0022.jpg`,
+    `${baseUrl}assets/gallery/IMG_0023.jpg`,
+    `${baseUrl}assets/gallery/IMG_0024.jpg`,
+    `${baseUrl}assets/gallery/IMG_0025.jpg`,
+    `${baseUrl}assets/gallery/IMG_0026.jpg`,
+    `${baseUrl}assets/gallery/IMG_0027.jpg`,
+    `${baseUrl}assets/gallery/IMG_0028.jpg`,
   ];
 
   const openModal = (imageSrc: string) => {

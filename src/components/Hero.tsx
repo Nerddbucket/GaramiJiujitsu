@@ -2,26 +2,27 @@ import { useState } from 'react';
 
 // Logo component with fallback handling for Hero
 const HeroLogo = () => {
-  const [imgSrc, setImgSrc] = useState('/assets/garami_logo.png');
+  const baseUrl = import.meta.env.BASE_URL;
+  const [imgSrc, setImgSrc] = useState(`${baseUrl}assets/garami_logo.png`);
   const [hasError, setHasError] = useState(false);
 
   const handleError = () => {
     if (imgSrc.includes('garami_logo.svg')) {
-      setImgSrc('/assets/garami_logo.png');
+      setImgSrc(`${baseUrl}assets/garami_logo.png`);
     } else if (imgSrc.includes('garami_logo.png')) {
-      setImgSrc('/assets/garami_logo.jpg');
+      setImgSrc(`${baseUrl}assets/garami_logo.jpg`);
     } else if (imgSrc.includes('garami_logo.jpg')) {
-      setImgSrc('/assets/garami_logo.jpeg');
+      setImgSrc(`${baseUrl}assets/garami_logo.jpeg`);
     } else if (imgSrc.includes('garami_logo.jpeg')) {
-      setImgSrc('/assets/garami_jiujitsulogo.jpeg');
+      setImgSrc(`${baseUrl}assets/garami_jiujitsulogo.jpeg`);
     } else if (imgSrc.includes('garami_jiujitsulogo.jpeg')) {
-      setImgSrc('/assets/logo.png');
+      setImgSrc(`${baseUrl}assets/logo.png`);
     } else if (imgSrc.includes('.svg')) {
-      setImgSrc('/assets/logo.png');
+      setImgSrc(`${baseUrl}assets/logo.png`);
     } else if (imgSrc.includes('.png')) {
-      setImgSrc('/assets/logo.jpg');
+      setImgSrc(`${baseUrl}assets/logo.jpg`);
     } else if (imgSrc.includes('.jpg')) {
-      setImgSrc('/assets/logo.jpeg');
+      setImgSrc(`${baseUrl}assets/logo.jpeg`);
     } else {
       setHasError(true);
     }
