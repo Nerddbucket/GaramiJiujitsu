@@ -69,7 +69,7 @@ A React + TypeScript project built with Vite, deployed on GitHub Pages.
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/GaramiJiujitsu.git
+   git remote add origin https://github.com/Nerddbucket/GaramiJiujitsu.git
    git push -u origin main
    ```
 
