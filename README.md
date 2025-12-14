@@ -73,11 +73,13 @@ A React + TypeScript project built with Vite, deployed on GitHub Pages.
    git push -u origin main
    ```
 
-4. **Enable GitHub Pages**
-   - Go to your repository on GitHub
-   - Navigate to **Settings** → **Pages**
-   - Under **Source**, select **GitHub Actions**
+4. **Enable GitHub Pages (REQUIRED - Do this first!)**
+   - Go to your repository on GitHub: `https://github.com/Nerddbucket/GaramiJiujitsu`
+   - Navigate to **Settings** → **Pages** (in the left sidebar)
+   - Under **Source**, select **GitHub Actions** (NOT "Deploy from a branch")
+   - Click **Save**
    - The workflow will automatically deploy on every push to `main`
+   - **Note**: If you see "Not Found" errors, make sure Pages is enabled in Settings first!
 
 ### Automatic Deployment
 
