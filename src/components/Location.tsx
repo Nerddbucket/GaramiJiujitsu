@@ -40,7 +40,7 @@ const Location = () => {
             </a>
           </div>
           
-          <div id="schedule" className="bg-brand-gray border border-white/10 rounded-2xl p-8 shadow-brand scroll-mt-20">
+          <div id="training-schedule" className="bg-brand-gray border border-white/10 rounded-2xl p-8 shadow-brand scroll-mt-20">
           <p className="text-sm uppercase tracking-[0.3em] text-white/50 mb-4">
             Schedule
           </p>
