@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import CallToAction from './components/CallToAction';
 import Programs from './components/Programs';
+import Schedule from './components/Schedule';
 import Location from './components/Location';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
@@ -17,6 +18,7 @@ function App() {
       <Hero />
       <CallToAction />
       <Programs />
+      <Schedule />
       <Location />
       <Contact />
       <Testimonials />

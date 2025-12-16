@@ -28,7 +28,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Location', href: '#locations' },
-    { name: 'Schedule', href: '#schedule' }, // Schedule section in locations
+    { name: 'Schedule', href: '#schedule' }, // Schedule & Free Trial section
     { name: 'Programs', href: '#programs', submenu: [
       { label: 'Kids Jiu Jitsu Program', anchor: '#kids-jiu-jitsu-program' },
       { label: 'Adults Jiu Jitsu Program', anchor: '#adults-jiu-jitsu-program' },
@@ -78,10 +78,10 @@ const Navigation = () => {
               </div>
             ))}
             <a
-              href="#contact"
+              href="#schedule"
               className="ml-4 inline-flex items-center bg-brand-green px-5 py-2 rounded-full text-xs font-semibold tracking-[0.2em] hover:bg-white hover:text-brand-dark transition-colors"
             >
-              Free Class
+              Free Trial
             </a>
           </div>
 
@@ -136,11 +136,11 @@ const Navigation = () => {
               </div>
             ))}
             <a
-              href="#contact"
+              href="#schedule"
               className="block text-center bg-brand-green py-3 rounded-full font-semibold tracking-[0.3em]"
               onClick={() => setIsMenuOpen(false)}
             >
-              Free Class
+              Free Trial
             </a>
           </div>
         )}

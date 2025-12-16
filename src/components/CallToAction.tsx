@@ -23,10 +23,10 @@ const CallToAction = () => {
 
         <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
           <a
-            href="#contact"
+            href="#schedule"
             className="inline-flex items-center justify-center bg-white text-brand-dark px-10 py-3 rounded-full font-semibold tracking-[0.3em] uppercase hover:bg-brand-green hover:text-white transition-colors"
           >
-            Free Class
+            Sign Up for Free Trial
           </a>
           <a
             href="#programs"

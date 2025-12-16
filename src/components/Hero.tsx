@@ -75,10 +75,10 @@ const Hero = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#contact"
+            href="#schedule"
             className="inline-flex items-center justify-center bg-brand-green px-10 py-3 uppercase tracking-[0.3em] rounded-full font-semibold hover:bg-white hover:text-brand-dark transition-colors"
           >
-            Free Class
+            Free Trial
           </a>
           <a
             href="#locations"
