@@ -16,7 +16,7 @@ const Schedule = () => {
       win.zenplanner.directLoadArgs = win.zenplanner.directLoadArgs || [];
       
       let tryCount = 0;
-      let intervalId: NodeJS.Timeout | null = null;
+      let intervalId: ReturnType<typeof setInterval> | null = null;
 
       function afterLoad() {
         if (win.zenplanner.directLoader !== undefined && win.zenplanner.directLoader !== null) {
