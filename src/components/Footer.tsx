@@ -73,7 +73,7 @@ const Footer = () => {
           <p className="text-sm uppercase tracking-[0.3em] text-white/60">Follow Us</p>
           <div className="flex items-center justify-center gap-4">
             <a
-              href="https://www.facebook.com/garamijiujitsu"
+              href="https://www.facebook.com/61579625956144/photos/d41d8cd9/122107151786987531/?set=a.122107148792987531&_rdr"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-brand-green transition-colors group"
