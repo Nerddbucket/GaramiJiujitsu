@@ -33,5 +33,16 @@ body {
 .section-divider {
   @apply w-28 h-1 bg-brand-green mx-auto;
 }
+
+/* Zen Planner Widget Styling */
+.zen-planner-widget-container {
+  min-height: 600px;
+  width: 100%;
+}
+
+.zen-planner-widget-container iframe {
+  border-radius: 1rem;
+  border: none;
+}
 /* stylelint-enable */
 

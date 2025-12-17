@@ -86,7 +86,7 @@ const Contact = () => {
               We'll See You There!
             </h3>
             <p className="text-white/80 mb-6">
-              For questions regarding our Brazilian Jiu Jitsu Programs please reach out!
+              For questions regarding our Brazilian Jiu Jitsu Programs please reach out to us on Social media!
             </p>
 
             <div className="space-y-5 border-t border-white/10 pt-6">
