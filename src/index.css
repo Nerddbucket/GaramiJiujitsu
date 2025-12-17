@@ -36,13 +36,24 @@ body {
 
 /* Zen Planner Widget Styling */
 .zen-planner-widget-container {
-  min-height: 600px;
+  min-height: 650px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .zen-planner-widget-container iframe {
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   border: none;
+  width: 100%;
+  min-height: 650px;
+}
+
+/* Ensure proper spacing for Zen Planner content */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d {
+  width: 100%;
+  min-height: 650px;
 }
 /* stylelint-enable */
 
