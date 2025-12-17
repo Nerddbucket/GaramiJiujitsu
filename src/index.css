@@ -55,5 +55,112 @@ body {
   width: 100%;
   min-height: 650px;
 }
+
+/* Zen Planner Widget - Spacing and Contrast Fixes */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d * {
+  box-sizing: border-box;
+}
+
+/* Ensure proper spacing on white rectangles/cards */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="card"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Card"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="container"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Container"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="box"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Box"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="panel"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Panel"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="item"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Item"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="slot"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Slot"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="time"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Time"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="class"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Class"] {
+  padding: 1rem 1.25rem !important;
+  margin: 0.75rem 0 !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Ensure text has proper contrast on white backgrounds */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background-color: white"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background-color: #fff"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background-color: #ffffff"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background: white"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background: #fff"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background: #ffffff"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="white"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="White"] {
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+}
+
+/* Ensure all text elements have proper contrast */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d p,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d span,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d div,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d label,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d h1,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d h2,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d h3,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d h4,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d h5,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d h6,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d a,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d button {
+  color: inherit;
+}
+
+/* Specific fix for white background containers - ensure dark text */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background"][style*="white"] *,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background"][style*="#fff"] * {
+  color: #1a1a1a !important;
+}
+
+/* Improve spacing between elements */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d > * {
+  margin: 0.5rem 0 !important;
+}
+
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d > * + * {
+  margin-top: 1rem !important;
+}
+
+/* Ensure buttons and interactive elements have proper contrast */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d button,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [role="button"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d a[href] {
+  color: #ffffff !important;
+  background-color: #1a1a1a !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.375rem !important;
+  font-weight: 500 !important;
+}
+
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d button:hover,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [role="button"]:hover,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d a[href]:hover {
+  background-color: #2a2a2a !important;
+  opacity: 0.9 !important;
+}
+
+/* Ensure form inputs have proper styling */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d input,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d select,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d textarea {
+  padding: 0.75rem !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.375rem !important;
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+}
+
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d label {
+  color: #1a1a1a !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
 /* stylelint-enable */
 
