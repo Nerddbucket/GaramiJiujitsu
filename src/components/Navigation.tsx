@@ -28,17 +28,17 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', href: '/', isHash: false },
-    { name: 'Location', href: '/#locations', isHash: true },
-    { name: 'Schedule', href: '/#schedule', isHash: true },
-    { name: 'Programs', href: '/#programs', isHash: true, submenu: [
-      { label: 'Kids Jiu Jitsu Program', anchor: '/#kids-jiu-jitsu-program' },
-      { label: 'Adults Jiu Jitsu Program', anchor: '/#adults-jiu-jitsu-program' },
-      { label: 'MMA and Striking Program', anchor: '/#mma-and-striking-program' },
-      { label: 'Women\'s Jiu Jitsu Classes', anchor: '/#programs' }
+    { name: 'Location', href: '#locations', isHash: true },
+    { name: 'Schedule', href: '#schedule', isHash: true },
+    { name: 'Programs', href: '#programs', isHash: true, submenu: [
+      { label: 'Kids Jiu Jitsu Program', anchor: '#kids-jiu-jitsu-program' },
+      { label: 'Adults Jiu Jitsu Program', anchor: '#adults-jiu-jitsu-program' },
+      { label: 'MMA and Striking Program', anchor: '#mma-and-striking-program' },
+      { label: 'Women\'s Jiu Jitsu Classes', anchor: '#programs' }
     ]},
-    { name: 'Gallery', href: '/#gallery', isHash: true },
-    { name: 'Contact', href: '/#contact', isHash: true },
-    { name: 'Next Event', href: '/#contact', isHash: true },
+    { name: 'Gallery', href: '#gallery', isHash: true },
+    { name: 'Contact', href: '#contact', isHash: true },
+    { name: 'Next Event', href: '#contact', isHash: true },
   ];
 
   return (

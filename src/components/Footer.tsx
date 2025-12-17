@@ -47,7 +47,7 @@ const Footer = () => {
     <footer className="bg-brand-dark text-white py-16 border-t border-white/5">
       <div className="container text-center space-y-10">
         <a
-          href="/free-trial"
+          href="#/free-trial"
           className="inline-flex items-center justify-center bg-brand-green text-white px-10 py-4 rounded-full font-semibold tracking-[0.3em] uppercase hover:bg-white hover:text-brand-dark transition-colors"
         >
           Free Trial Class
