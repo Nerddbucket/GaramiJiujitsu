@@ -1,6 +1,3 @@
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
-import Banner from '../components/Banner';
 import { useZenPlanner } from '../hooks/useZenPlanner';
 
 const WIDGET_ID = 'freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d';
@@ -9,10 +6,7 @@ const FreeTrial = () => {
   useZenPlanner(WIDGET_ID);
 
   return (
-    <div className="min-h-screen">
-      <Banner />
-      <Navigation />
-      <section className="bg-brand-dark text-white py-20 min-h-[80vh]">
+    <section className="bg-brand-dark text-white py-20 min-h-[80vh]">
         <div className="container">
           <div className="text-center mb-12">
             <p className="tracking-[0.8em] text-xs text-white/60 uppercase mb-4">Get Started</p>
@@ -35,9 +29,7 @@ const FreeTrial = () => {
             </div>
           </div>
         </div>
-      </section>
-      <Footer />
-    </div>
+    </section>
   );
 };
 
