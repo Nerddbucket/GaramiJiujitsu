@@ -20,11 +20,11 @@ const FreeTrial = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-brand-gray/30 rounded-2xl p-4 md:p-10 lg:p-12 border border-white/10 shadow-xl backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="bg-brand-gray/30 rounded-2xl p-2 md:p-6 lg:p-8 border border-white/10 shadow-xl backdrop-blur-sm w-full overflow-hidden">
             <div 
               id={WIDGET_ID}
-              className="zen-planner-widget-container"
+              className="zen-planner-widget-container w-full"
             />
           </div>
         </div>

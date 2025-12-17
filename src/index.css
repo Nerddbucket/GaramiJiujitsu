@@ -39,8 +39,10 @@ body {
   min-height: 650px;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .zen-planner-widget-container iframe {
@@ -48,17 +50,25 @@ body {
   border: none;
   width: 100%;
   min-height: 650px;
+  max-width: 100%;
 }
 
 /* Ensure proper spacing for Zen Planner content */
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d {
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   min-height: 650px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* Zen Planner Widget - Spacing and Contrast Fixes */
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
 }
 
 /* Ensure proper spacing on white rectangles/cards */
@@ -78,9 +88,12 @@ body {
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Time"],
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="class"],
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="Class"] {
-  padding: 1rem 1.25rem !important;
-  margin: 0.75rem 0 !important;
+  padding: 0.875rem 1rem !important;
+  margin: 0.5rem 0 !important;
   border-radius: 0.5rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
 }
 
 /* Ensure text has proper contrast on white backgrounds */
@@ -121,10 +134,31 @@ body {
 /* Improve spacing between elements */
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d > * {
   margin: 0.5rem 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d > * + * {
-  margin-top: 1rem !important;
+  margin-top: 0.75rem !important;
+}
+
+/* Prevent horizontal overflow */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d table,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="table"],
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [class*="table"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: auto !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+/* Ensure images and media fit */
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d img,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d video,
+#freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d iframe {
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 /* Ensure buttons and interactive elements have proper contrast */

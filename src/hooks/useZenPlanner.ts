@@ -23,12 +23,22 @@ export const useZenPlanner = (containerId: string) => {
       const container = doc.getElementById(containerId);
       if (!container) return;
 
+      // Ensure container has proper width constraints
+      container.style.width = '100%';
+      container.style.maxWidth = '100%';
+      container.style.overflowX = 'hidden';
+      container.style.boxSizing = 'border-box';
+
       // Apply styles to all elements within the widget
       const elements = container.querySelectorAll('*');
       elements.forEach((el: Element) => {
         const htmlEl = el as HTMLElement;
         const computedStyle = win.getComputedStyle(htmlEl);
         const bgColor = computedStyle.backgroundColor;
+        
+        // Ensure all elements respect width constraints
+        htmlEl.style.maxWidth = '100%';
+        htmlEl.style.boxSizing = 'border-box';
         
         // Check if element has white background
         if (bgColor && (
@@ -46,14 +56,17 @@ export const useZenPlanner = (containerId: string) => {
           // Add padding if element is a container-like element
           if (htmlEl.tagName === 'DIV' || htmlEl.tagName === 'SECTION' || htmlEl.classList.toString().toLowerCase().includes('card') || htmlEl.classList.toString().toLowerCase().includes('container')) {
             if (!htmlEl.style.padding || htmlEl.style.padding === '0px') {
-              htmlEl.style.padding = '1rem 1.25rem';
+              htmlEl.style.padding = '0.875rem 1rem';
             }
             if (!htmlEl.style.margin || htmlEl.style.margin === '0px') {
-              htmlEl.style.margin = '0.75rem 0';
+              htmlEl.style.margin = '0.5rem 0';
             }
             if (!htmlEl.style.borderRadius) {
               htmlEl.style.borderRadius = '0.5rem';
             }
+            htmlEl.style.width = '100%';
+            htmlEl.style.maxWidth = '100%';
+            htmlEl.style.overflowX = 'hidden';
           }
         }
 
@@ -91,6 +104,9 @@ export const useZenPlanner = (containerId: string) => {
           htmlEl.style.borderRadius = '0.375rem';
           htmlEl.style.color = '#1a1a1a';
           htmlEl.style.backgroundColor = '#ffffff';
+          htmlEl.style.width = '100%';
+          htmlEl.style.maxWidth = '100%';
+          htmlEl.style.boxSizing = 'border-box';
         }
 
         // Style labels
@@ -108,6 +124,21 @@ export const useZenPlanner = (containerId: string) => {
           htmlEl.style.fontWeight = '500';
           htmlEl.style.marginBottom = '0.5rem';
           htmlEl.style.display = 'block';
+        }
+
+        // Ensure tables and lists don't overflow
+        if (htmlEl.tagName === 'TABLE') {
+          htmlEl.style.width = '100%';
+          htmlEl.style.maxWidth = '100%';
+          htmlEl.style.tableLayout = 'auto';
+          htmlEl.style.overflowX = 'auto';
+          htmlEl.style.display = 'block';
+        }
+
+        // Ensure images fit
+        if (htmlEl.tagName === 'IMG') {
+          htmlEl.style.maxWidth = '100%';
+          htmlEl.style.height = 'auto';
         }
       });
     }
