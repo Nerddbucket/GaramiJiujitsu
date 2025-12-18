@@ -1,46 +1,84 @@
 import { useEffect } from 'react';
 
-const ZEN_PLANNER_CONFIG = {
-  zenJSHost: 'https://studio.zenplanner.com',
-  src: 'zenplanner/studio/target/zp-widget-direct.js',
-  module: 'freetrial',
-  partitionApiKey: 'ee56b422-dd8a-42b2-ac06-b391e9997b03',
-  widgetInstanceId: '084d47b5-47d1-42c3-8abd-69a3058b873d',
-} as const;
-
 export const useZenPlanner = (containerId: string) => {
   useEffect(() => {
     const win = window as any;
     const doc = document;
-    const { zenJSHost, src, module, partitionApiKey, widgetInstanceId } = ZEN_PLANNER_CONFIG;
+    const zenJSHost = 'https://studio.zenplanner.com';
+    const src = 'zenplanner/studio/target/zp-widget-direct.js';
+    const module = 'freetrial';
+    const partitionApiKey = 'ee56b422-dd8a-42b2-ac06-b391e9997b03';
+    const widgetInstanceId = '084d47b5-47d1-42c3-8abd-69a3058b873d';
 
     let tryCount = 0;
     let intervalId: ReturnType<typeof setInterval> | null = null;
     let styleObserver: MutationObserver | null = null;
 
-    // Function to apply spacing and contrast fixes
+    // Function to apply spacing and layout fixes
     function applyWidgetStyles() {
       const container = doc.getElementById(containerId);
       if (!container) return;
 
-      // Ensure container has proper width constraints
+      // Container constraints
       container.style.width = '100%';
       container.style.maxWidth = '100%';
       container.style.overflowX = 'hidden';
       container.style.boxSizing = 'border-box';
+      container.style.padding = '4rem 3rem';
 
-      // Apply styles to all elements within the widget
-      const elements = container.querySelectorAll('*');
-      elements.forEach((el: Element) => {
+      // Remove duplicate lists
+      const directChildren = Array.from(container.children);
+      if (directChildren.length > 1) {
+        const firstChild = directChildren[0];
+        const firstText = firstChild.textContent?.trim() || '';
+        
+        for (let i = 1; i < directChildren.length; i++) {
+          const child = directChildren[i] as HTMLElement;
+          const childText = child.textContent?.trim() || '';
+          
+          if (childText && firstText && childText === firstText) {
+            child.style.display = 'none';
+          }
+        }
+      }
+
+      // Force single column layout on all grid/flex containers
+      const allElements = container.querySelectorAll('*');
+      allElements.forEach((el: Element) => {
         const htmlEl = el as HTMLElement;
         const computedStyle = win.getComputedStyle(htmlEl);
+        
+        // Force single column for grid
+        if (computedStyle.display === 'grid') {
+          htmlEl.style.gridTemplateColumns = '1fr';
+          htmlEl.style.width = '100%';
+        }
+        
+        // Force single column for flex
+        if (computedStyle.display === 'flex' || computedStyle.display === 'inline-flex') {
+          htmlEl.style.flexDirection = 'column';
+          htmlEl.style.width = '100%';
+        }
+        
+        // Force single column for columns
+        if (computedStyle.columnCount && parseInt(computedStyle.columnCount) > 1) {
+          htmlEl.style.columnCount = '1';
+        }
+
+        // Add proper spacing to text elements
+        if (['P', 'SPAN', 'DIV', 'LABEL', 'LI'].includes(htmlEl.tagName)) {
+          if (!htmlEl.style.padding || htmlEl.style.padding === '0px') {
+            htmlEl.style.padding = '0.75rem 1rem';
+          }
+          if (!htmlEl.style.margin || htmlEl.style.margin === '0px') {
+            htmlEl.style.margin = '0.5rem 0';
+          }
+          htmlEl.style.lineHeight = '1.6';
+          htmlEl.style.display = 'block';
+        }
+
+        // Fix text contrast on white backgrounds
         const bgColor = computedStyle.backgroundColor;
-        
-        // Ensure all elements respect width constraints
-        htmlEl.style.maxWidth = '100%';
-        htmlEl.style.boxSizing = 'border-box';
-        
-        // Check if element has white background
         if (bgColor && (
           bgColor.includes('rgb(255, 255, 255)') ||
           bgColor.includes('rgb(255,255,255)') ||
@@ -48,97 +86,9 @@ export const useZenPlanner = (containerId: string) => {
           bgColor === '#ffffff' ||
           bgColor === '#fff'
         )) {
-          // Ensure dark text on white backgrounds
           if (!htmlEl.style.color || htmlEl.style.color === 'rgb(255, 255, 255)' || htmlEl.style.color === 'white') {
             htmlEl.style.color = '#1a1a1a';
           }
-          
-          // Add padding if element is a container-like element
-          if (htmlEl.tagName === 'DIV' || htmlEl.tagName === 'SECTION' || htmlEl.classList.toString().toLowerCase().includes('card') || htmlEl.classList.toString().toLowerCase().includes('container')) {
-            if (!htmlEl.style.padding || htmlEl.style.padding === '0px') {
-              htmlEl.style.padding = '0.875rem 1rem';
-            }
-            if (!htmlEl.style.margin || htmlEl.style.margin === '0px') {
-              htmlEl.style.margin = '0.5rem 0';
-            }
-            if (!htmlEl.style.borderRadius) {
-              htmlEl.style.borderRadius = '0.5rem';
-            }
-            htmlEl.style.width = '100%';
-            htmlEl.style.maxWidth = '100%';
-            htmlEl.style.overflowX = 'hidden';
-          }
-        }
-
-        // Ensure text elements have proper color
-        if (['P', 'SPAN', 'DIV', 'LABEL', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(htmlEl.tagName)) {
-          const parentBg = win.getComputedStyle(htmlEl.parentElement || htmlEl).backgroundColor;
-          if (parentBg && (
-            parentBg.includes('rgb(255, 255, 255)') ||
-            parentBg.includes('rgb(255,255,255)') ||
-            parentBg === 'white' ||
-            parentBg === '#ffffff' ||
-            parentBg === '#fff'
-          )) {
-            if (!htmlEl.style.color || htmlEl.style.color === 'rgb(255, 255, 255)' || htmlEl.style.color === 'white') {
-              htmlEl.style.color = '#1a1a1a';
-            }
-          }
-        }
-
-        // Style buttons and interactive elements
-        if (htmlEl.tagName === 'BUTTON' || htmlEl.getAttribute('role') === 'button' || (htmlEl.tagName === 'A' && htmlEl.getAttribute('href'))) {
-          htmlEl.style.color = '#ffffff';
-          htmlEl.style.backgroundColor = '#1a1a1a';
-          htmlEl.style.padding = '0.75rem 1.5rem';
-          htmlEl.style.borderRadius = '0.375rem';
-          htmlEl.style.fontWeight = '500';
-          htmlEl.style.border = 'none';
-          htmlEl.style.cursor = 'pointer';
-        }
-
-        // Style form inputs
-        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(htmlEl.tagName)) {
-          htmlEl.style.padding = '0.75rem';
-          htmlEl.style.border = '1px solid #d1d5db';
-          htmlEl.style.borderRadius = '0.375rem';
-          htmlEl.style.color = '#1a1a1a';
-          htmlEl.style.backgroundColor = '#ffffff';
-          htmlEl.style.width = '100%';
-          htmlEl.style.maxWidth = '100%';
-          htmlEl.style.boxSizing = 'border-box';
-        }
-
-        // Style labels
-        if (htmlEl.tagName === 'LABEL') {
-          const parentBg = win.getComputedStyle(htmlEl.parentElement || htmlEl).backgroundColor;
-          if (parentBg && (
-            parentBg.includes('rgb(255, 255, 255)') ||
-            parentBg.includes('rgb(255,255,255)') ||
-            parentBg === 'white' ||
-            parentBg === '#ffffff' ||
-            parentBg === '#fff'
-          )) {
-            htmlEl.style.color = '#1a1a1a';
-          }
-          htmlEl.style.fontWeight = '500';
-          htmlEl.style.marginBottom = '0.5rem';
-          htmlEl.style.display = 'block';
-        }
-
-        // Ensure tables and lists don't overflow
-        if (htmlEl.tagName === 'TABLE') {
-          htmlEl.style.width = '100%';
-          htmlEl.style.maxWidth = '100%';
-          htmlEl.style.tableLayout = 'auto';
-          htmlEl.style.overflowX = 'auto';
-          htmlEl.style.display = 'block';
-        }
-
-        // Ensure images fit
-        if (htmlEl.tagName === 'IMG') {
-          htmlEl.style.maxWidth = '100%';
-          htmlEl.style.height = 'auto';
         }
       });
     }
@@ -150,15 +100,17 @@ export const useZenPlanner = (containerId: string) => {
           if (win.zenplanner.directLoadArgs[i].widgetInstanceId === widgetInstanceId) {
             win.zenplanner.directLoader.loadWidget(zenJSHost, module, partitionApiKey, widgetInstanceId);
             
-            // Wait a bit for widget to render, then apply styles
+            // Wait for widget to render, then apply styles multiple times
             setTimeout(() => {
               applyWidgetStyles();
+              setTimeout(() => applyWidgetStyles(), 1000);
+              setTimeout(() => applyWidgetStyles(), 2000);
               
               // Set up observer to apply styles when widget content changes
               const container = doc.getElementById(containerId);
               if (container) {
                 styleObserver = new MutationObserver(() => {
-                  applyWidgetStyles();
+                  setTimeout(() => applyWidgetStyles(), 100);
                 });
                 styleObserver.observe(container, {
                   childList: true,
@@ -167,7 +119,7 @@ export const useZenPlanner = (containerId: string) => {
                   attributeFilter: ['style', 'class']
                 });
               }
-            }, 500);
+            }, 1000);
           }
         }
       } else if (tryCount++ > 200) {
@@ -186,7 +138,7 @@ export const useZenPlanner = (containerId: string) => {
         widgetInstanceId: widgetInstanceId 
       });
       const s = doc.createElement('script');
-      s.async = true;
+      s.async = 1;
       s.src = zenJSHost + '/' + src;
       doc.head.appendChild(s);
       intervalId = setInterval(afterLoad, 50);
@@ -196,11 +148,13 @@ export const useZenPlanner = (containerId: string) => {
       // Apply styles after widget loads
       setTimeout(() => {
         applyWidgetStyles();
+        setTimeout(() => applyWidgetStyles(), 1000);
+        setTimeout(() => applyWidgetStyles(), 2000);
         
         const container = doc.getElementById(containerId);
         if (container) {
           styleObserver = new MutationObserver(() => {
-            applyWidgetStyles();
+            setTimeout(() => applyWidgetStyles(), 100);
           });
           styleObserver.observe(container, {
             childList: true,
@@ -209,7 +163,7 @@ export const useZenPlanner = (containerId: string) => {
             attributeFilter: ['style', 'class']
           });
         }
-      }, 500);
+      }, 1000);
     }
 
     return () => {
