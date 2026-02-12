@@ -138,7 +138,7 @@ export const useZenPlanner = (containerId: string) => {
         widgetInstanceId: widgetInstanceId 
       });
       const s = doc.createElement('script');
-      s.async = 1;
+      s.async = true;
       s.src = zenJSHost + '/' + src;
       doc.head.appendChild(s);
       intervalId = setInterval(afterLoad, 50);
