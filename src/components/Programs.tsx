@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Programs = () => {
   const programs = [
     {
@@ -54,13 +56,13 @@ const Programs = () => {
               <p className="text-base text-brand-dark/80 leading-relaxed mb-8">
                 {program.description}
               </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 uppercase tracking-[0.3em] text-sm font-semibold"
+              <Link
+                to="/free-trial"
+                className="inline-flex items-center gap-2 uppercase tracking-[0.3em] text-sm font-semibold hover:text-brand-green transition-colors"
               >
                 {program.cta}
                 <span className="block h-px w-12 bg-brand-dark" />
-              </a>
+              </Link>
             </div>
             );
           })}

@@ -1,5 +1,21 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+// Scroll to in-page section by id (works with HashRouter without breaking route)
+const scrollToId = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+const handleSectionClick = (scrollId: string, navigate: ReturnType<typeof useNavigate>, pathname: string, closeMenu?: () => void) => {
+  closeMenu?.();
+  if (pathname === '/') {
+    scrollToId(scrollId);
+  } else {
+    navigate('/');
+    setTimeout(() => scrollToId(scrollId), 150);
+  }
+};
 
 // Logo component with fallback handling
 const LogoImage = ({ className }: { className: string }) => {
@@ -25,20 +41,22 @@ const LogoImage = ({ className }: { className: string }) => {
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', href: '/', isHash: false },
-    { name: 'Location', href: '#locations', isHash: true },
-    { name: 'Schedule', href: '#schedule', isHash: true },
-    { name: 'Programs', href: '#programs', isHash: true, submenu: [
-      { label: 'Kids Jiu Jitsu Program', anchor: '#kids-jiu-jitsu-program' },
-      { label: 'Adults Jiu Jitsu Program', anchor: '#adults-jiu-jitsu-program' },
-      { label: 'MMA and Striking Program', anchor: '#mma-and-striking-program' },
-      { label: 'Women\'s Jiu Jitsu Classes', anchor: '#programs' }
+    { name: 'Location', href: '/', isHash: true, scrollId: 'locations' },
+    { name: 'Schedule', href: '/', isHash: true, scrollId: 'training-schedule' },
+    { name: 'Programs', href: '/', isHash: true, scrollId: 'programs', submenu: [
+      { label: 'Kids Jiu Jitsu Program', scrollId: 'kids-jiu-jitsu-program' },
+      { label: 'Adults Jiu Jitsu Program', scrollId: 'adults-jiu-jitsu-program' },
+      { label: 'MMA and Striking Program', scrollId: 'mma-and-striking-program' },
+      { label: 'Women\'s Jiu Jitsu Classes', scrollId: 'programs' }
     ]},
-    { name: 'Gallery', href: '#gallery', isHash: true },
-    { name: 'Contact', href: '#contact', isHash: true },
-    { name: 'Next Event', href: '#contact', isHash: true },
+    { name: 'Gallery', href: '/', isHash: true, scrollId: 'gallery' },
+    { name: 'Contact', href: '/', isHash: true, scrollId: 'contact' },
+    { name: 'Next Event', href: '/', isHash: true, scrollId: 'contact' },
   ];
 
   return (
@@ -53,31 +71,33 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center space-x-6 text-sm uppercase tracking-[0.3em]">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
-                {item.isHash ? (
-                  <a
-                    href={item.href}
+                {item.isHash && item.scrollId ? (
+                  <Link
+                    to="/"
                     className="hover:text-brand-green transition-colors py-6 inline-flex"
+                    onClick={() => handleSectionClick(item.scrollId!, navigate, location.pathname)}
                   >
                     {item.name}
-                  </a>
-                ) : (
+                  </Link>
+                ) : !item.isHash ? (
                   <Link
                     to={item.href}
                     className="hover:text-brand-green transition-colors py-6 inline-flex"
                   >
                     {item.name}
                   </Link>
-                )}
+                ) : null}
                 {item.submenu && (
                   <div className="absolute left-0 top-full mt-1 w-56 bg-brand-gray text-xs tracking-normal uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg">
-                    {item.submenu.map((subItem: { label: string; anchor: string }) => (
-                      <a
+                    {item.submenu.map((subItem: { label: string; scrollId: string }) => (
+                      <Link
                         key={subItem.label}
-                        href={subItem.anchor}
+                        to="/"
                         className="block px-5 py-3 hover:bg-brand-dark/80"
+                        onClick={() => handleSectionClick(subItem.scrollId, navigate, location.pathname)}
                       >
                         {subItem.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -112,15 +132,15 @@ const Navigation = () => {
           <div className="lg:hidden py-4 text-white uppercase tracking-[0.2em] space-y-3">
             {navItems.map((item) => (
               <div key={item.name}>
-                {item.isHash ? (
-                  <a
-                    href={item.href}
+                {item.isHash && item.scrollId ? (
+                  <Link
+                    to="/"
                     className="block py-2 border-b border-white/10"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => handleSectionClick(item.scrollId!, navigate, location.pathname, () => setIsMenuOpen(false))}
                   >
                     {item.name}
-                  </a>
-                ) : (
+                  </Link>
+                ) : !item.isHash ? (
                   <Link
                     to={item.href}
                     className="block py-2 border-b border-white/10"
@@ -128,18 +148,18 @@ const Navigation = () => {
                   >
                     {item.name}
                   </Link>
-                )}
+                ) : null}
                 {item.submenu && (
                   <div className="pl-3 text-xs tracking-normal space-y-1 mt-2 text-white/70">
-                    {item.submenu.map((subItem: { anchor: string; label: string }) => (
-                      <a
+                    {item.submenu.map((subItem: { label: string; scrollId: string }) => (
+                      <Link
                         key={subItem.label}
-                        href={subItem.anchor}
+                        to="/"
                         className="block py-1"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => handleSectionClick(subItem.scrollId, navigate, location.pathname, () => setIsMenuOpen(false))}
                       >
                         {subItem.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
