@@ -97,5 +97,26 @@ body {
 #freetrial_084d47b5-47d1-42c3-8abd-69a3058b873d [style*="background-color: #ffffff"] {
   color: #1a1a1a !important;
 }
+
+/* Hide TODO tree and any development overlays */
+[class*="todo"],
+[class*="Todo"],
+[class*="TODO"],
+[id*="todo"],
+[id*="Todo"],
+[id*="TODO"],
+[data-todo],
+[data-todo-tree],
+.todo-tree,
+#todo-tree,
+.todo-overlay,
+#todo-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
 /* stylelint-enable */
 
