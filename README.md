@@ -33,19 +33,6 @@ Mon–Fri 4:00 PM – 9:00 PM · Sat 8:30 AM – 12:30 PM
 React · TypeScript · Vite · Tailwind CSS · React Router  
 Deployed on GitHub Pages
 
-## Getting started
-
-Requires [Node.js](https://nodejs.org/) 18+.
-
-```bash
-npm install
-npm run dev      # local development
-npm run build    # production build → dist/
-npm run preview  # preview the production build
-```
-
-Pushes to `main` deploy automatically via GitHub Actions (`.github/workflows/deploy.yml`).
-
 ---
 
 © Garami Jiu Jitsu · Fayetteville, NC
