@@ -57,9 +57,6 @@ const Footer = () => {
           <FooterLogo />
           <div className="space-y-3 text-sm">
             <p className="uppercase tracking-[0.4em] text-white/60">Garami Jiu Jitsu</p>
-          <p className="text-white/70">
-            5519 Waldos Beach Road, Fayetteville, North Carolina 28306, United States
-          </p>
           <p>
             <a href="tel:9109881212" className="text-brand-green hover:underline">
               (910) 988-1212

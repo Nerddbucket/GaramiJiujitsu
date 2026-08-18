@@ -61,7 +61,7 @@ const Hero = () => {
       <div className="relative container text-center">
         <HeroLogo />
         <p className="uppercase tracking-[0.6em] text-xs text-white/60 mb-6">
-          Fayetteville, North Carolina
+          Raeford, North Carolina
         </p>
         <h1 className="text-4xl md:text-6xl font-display tracking-[0.2em] leading-tight mb-6">
           Garami Jiu Jitsu

@@ -92,14 +92,6 @@ const Contact = () => {
             <div className="space-y-5 border-t border-white/10 pt-6">
               <div>
                 <p className="text-xs uppercase tracking-[0.4em] text-white/50 mb-2">
-                  Address
-                </p>
-                <p>
-                  5519 Waldos Beach Road, Fayetteville, North Carolina 28306, United States
-                </p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/50 mb-2">
                   Text
                 </p>
                 <a href="tel:9109881212" className="text-brand-green hover:underline">
