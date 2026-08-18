@@ -1,6 +1,6 @@
 # Garami Jiu Jitsu
 
-Official website for **Garami Jiu Jitsu** — a Brazilian Jiu Jitsu and MMA gym in Raeford, NC.
+Official website for **Garami Jiu Jitsu** — a Brazilian Jiu Jitsu and MMA gym in Fayetteville, NC.
 
 Train with coaches who care about your growth on and off the mat. Kids, adults, and beginners welcome.
 
@@ -12,6 +12,7 @@ Garami Jiu Jitsu offers Brazilian Jiu Jitsu, MMA, and striking in a supportive c
 
 | | |
 |---|---|
+| **Address** | 5519 Waldos Beach Road, Fayetteville, NC 28306 |
 | **Phone** | [(910) 988-1212](tel:9109881212) |
 | **Instagram** | [@garamijiujitsu](https://www.instagram.com/garamijiujitsu) |
 | **YouTube** | [@garamijiujitsu](https://www.youtube.com/@garamijiujitsu) |
@@ -23,7 +24,7 @@ Mon–Fri 4:00 PM – 9:00 PM · Sat 8:30 AM – 12:30 PM
 
 - **Programs** — Kids BJJ, Adults BJJ, MMA & striking, women’s classes
 - **Free trial** — Book a trial class online (Zen Planner)
-- **Location & schedule** — Gym hours and location
+- **Location & schedule** — Gym address, hours, and directions
 - **Gallery & testimonials** — Community photos and member reviews
 - **Contact** — Email signup and gym contact details
 
@@ -34,4 +35,4 @@ Deployed on GitHub Pages
 
 ---
 
-© Garami Jiu Jitsu · Raeford, NC
+© Garami Jiu Jitsu · Fayetteville, NC

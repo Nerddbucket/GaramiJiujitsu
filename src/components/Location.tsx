@@ -13,19 +13,31 @@ const Location = () => {
         </div>
 
         <div className="max-w-4xl mx-auto grid gap-10 md:grid-cols-2">
-          <div id="raeford" className="bg-brand-gray border border-white/10 rounded-2xl p-8 shadow-brand scroll-mt-20">
+          <div id="fayetteville-downtown" className="bg-brand-gray border border-white/10 rounded-2xl p-8 shadow-brand scroll-mt-20">
             <p className="text-sm uppercase tracking-[0.3em] text-white/50 mb-4">
-              Raeford
+              Fayetteville
             </p>
             <h3 className="text-3xl font-display uppercase tracking-[0.2em] mb-6">
               Garami Jiu Jitsu
             </h3>
-            <p className="text-lg text-white/80">
+            <p className="text-lg text-white/80 mb-4">
+              5519 Waldos Beach Road<br />Fayetteville, North Carolina 28306<br />United States
+            </p>
+            <p className="text-lg text-white/80 mb-8">
               Text:{" "}
               <a href="tel:9109881212" className="text-brand-green hover:underline">
                 (910) 988-1212
               </a>
             </p>
+            <a
+              href="https://maps.google.com/?q=5519+Waldos+Beach+Road,+Fayetteville,+NC+28306"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 uppercase tracking-[0.3em] text-sm font-semibold"
+            >
+              Get Directions
+              <span className="block h-px w-16 bg-white" />
+            </a>
           </div>
           
           <div id="training-schedule" className="bg-brand-gray border border-white/10 rounded-2xl p-8 shadow-brand scroll-mt-20">
